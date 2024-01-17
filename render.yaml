@@ -4,3 +4,6 @@ services:
     env: docker
     region: Frankfurt
     plan: free
+  volumes:
+  - name: volume4
+    mountPath: /GataBotSession
