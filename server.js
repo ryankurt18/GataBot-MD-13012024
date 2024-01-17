@@ -7,21 +7,31 @@ import fetch from 'node-fetch'
 
 function connect(conn, PORT) {
   const app = global.app = express()
-  console.log(app)
+  //console.log(app)
   const server = global.server = createServer(app)
   let _qr = 'QR invalido, probablemente ya hayas escaneado el QR.'
 
   conn.ev.on('connection.update', function appQR({qr}) {
-    if (qr) _qr = qr
+    if (qr) {
+      _qr = qr
+      if (global.keepAliveRender === 1 && process.env.RENDER_EXTERNAL_URL) {
+        console.log(`Para obtener el código QR por favor ingresa a ${process.env.RENDER_EXTERNAL_URL}/get-qr-code`);
+      }
+    } 
   })
 
-  app.use(async (req, res) => {
+  app.get('/get-qr-code', async (req, res) => {
     res.setHeader('content-type', 'image/png')
     res.end(await toBuffer(_qr))
-  })
+  });
 
-  server.listen(PORT, () => {
+  app.get('*', async (req, res) => {
+    res.json("GATABOT-MD en ejecución");
+  });
+
+  server.listen(PORT, async () => {
     console.log('App listened on port', PORT)
+    if (global.keepAliveRender === 1) await keepAliveHostRender();
     if (opts['keepalive']) keepAlive()
   })
 }
@@ -44,6 +54,26 @@ function keepAlive() {
   setInterval(() => {
     fetch(url).catch(console.error)
   }, 5 * 1000 * 60)
+}
+
+//Kurt18: Esta función va impedir que Render vaya a modo suspensión por inactividad
+const keepAliveHostRender = async () => {
+  try {
+      setInterval(async() => {
+        if (process.env.RENDER_EXTERNAL_URL) {
+          const urlRender = process.env.RENDER_EXTERNAL_URL;
+          const res = await fetch(urlRender);
+          if (res.status === 200) {
+            const result = await res.text();
+            console.log(`Resultado desde keepAliveHostRender() ->`, result);
+          }
+        } else {
+          console.log(`No se encontró URL en Host Render.com. Por favor ir a config.js y modificar a cero el valor de: global.keepAliveRender`);
+        }
+      }, 5 * 1000 * 60)
+  } catch (error) {
+    console.log(`Error manejado en server.js keepAliveHostRender() detalles: ${error}`);
+  }
 }
 
 export default connect
