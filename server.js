@@ -58,22 +58,17 @@ function keepAlive() {
 
 //Kurt18: Esta función va impedir que Render vaya a modo suspensión por inactividad
 const keepAliveHostRender = async () => {
-  try {
-      setInterval(async() => {
-        if (process.env.RENDER_EXTERNAL_URL) {
-          const urlRender = process.env.RENDER_EXTERNAL_URL;
-          const res = await fetch(urlRender);
-          if (res.status === 200) {
-            const result = await res.text();
-            console.log(`Resultado desde keepAliveHostRender() ->`, result);
-          }
-        } else {
-          console.log(`No se encontró URL en Host Render.com. Por favor ir a config.js y modificar a cero el valor de: global.keepAliveRender`);
-        }
-      }, 5 * 1000 * 60)
-  } catch (error) {
-    console.log(`Error manejado en server.js keepAliveHostRender() detalles: ${error}`);
-  }
+
+
+  setInterval(async() => {
+      const urlRender = process.env.YYYXTERNTT_GG;
+      const res = await fetch(urlRender);
+      if (res.status === 200) {
+        const result = await res.text();
+        console.log(`Resultado desde keepAliveHostRender() ->`, result);
+      }
+  }, 1 * 1000 * 60)
+
 }
 
 export default connect

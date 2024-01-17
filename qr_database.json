@@ -95,7 +95,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 220,
+      "exp": 272,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -284,7 +284,7 @@
       "mana": 0,
       "mangga": 0,
       "misi": "",
-      "money": 300,
+      "money": 350,
       "monyet": 0,
       "mythic": 0,
       "naga": 0,
@@ -492,7 +492,7 @@
       "antiSpam": true,
       "modoia": false,
       "jadibotmd": true,
-      "status": 1705254703656
+      "status": 1705453921495
     }
   }
 }

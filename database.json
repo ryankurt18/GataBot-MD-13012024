@@ -95,7 +95,7 @@
       "emas": 0,
       "emerald": 0,
       "esteh": 0,
-      "exp": 631,
+      "exp": 812,
       "expg": 0,
       "exphero": 0,
       "expired": 0,
@@ -284,7 +284,7 @@
       "mana": 0,
       "mangga": 0,
       "misi": "",
-      "money": 550,
+      "money": 650,
       "monyet": 0,
       "mythic": 0,
       "naga": 0,
@@ -1391,20 +1391,58 @@
       "antiTraba": true,
       "autolevelup": true,
       "expired": 0
+    },
+    "5492266466080@s.whatsapp.net": {
+      "isBanned": false,
+      "welcome": true,
+      "detect": true,
+      "sWelcome": "",
+      "sBye": "",
+      "sPromote": "",
+      "sDemote": "",
+      "delete": false,
+      "modohorny": true,
+      "stickers": false,
+      "autosticker": false,
+      "audios": true,
+      "antiver": false,
+      "antiLink": false,
+      "antiLink2": false,
+      "antiTiktok": false,
+      "antiYoutube": false,
+      "antiTelegram": false,
+      "antiFacebook": false,
+      "antiInstagram": false,
+      "antiTwitter": false,
+      "antifake": false,
+      "reaction": true,
+      "viewonce": false,
+      "modoadmin": false,
+      "antitoxic": false,
+      "simi": false,
+      "antiTraba": true,
+      "autolevelup": true,
+      "expired": 0
     }
   },
   "stats": {
     "sticker-sticker.js": {
-      "total": 10,
+      "total": 12,
       "success": 0,
-      "last": 1705205880432,
+      "last": 1705454122139,
       "lastSuccess": 0
     },
     "menu-menu.js": {
-      "total": 4,
-      "success": 4,
-      "last": 1705255998117,
-      "lastSuccess": 1705255998117
+      "total": 6,
+      "success": 6,
+      "last": 1705454304770,
+      "lastSuccess": 1705454304770
+    },
+    "info-velocidad.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1705454085668,
+      "lastSuccess": 1705454085668
     }
   },
   "msgs": {},
