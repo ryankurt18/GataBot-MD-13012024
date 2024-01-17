@@ -67,7 +67,7 @@ const keepAliveHostRender = async () => {
         const result = await res.text();
         console.log(`Resultado desde keepAliveHostRender() ->`, result);
       }
-  }, 1 * 1000 * 60)
+  }, 3 * 1000 * 60)
 
 }
 
