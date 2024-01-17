@@ -10,6 +10,8 @@ RUN apk update && \
   libwebp-tools && \
   rm -rf /var/cache/apk/*
 
+VOLUME /GataBotSession
+
 COPY package*.json .
 
 RUN npm install
