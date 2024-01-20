@@ -2,6 +2,8 @@ import { sticker } from "../lib/sticker.js";
 import uploadFile from "../lib/uploadFile.js";
 import uploadImage from "../lib/uploadImage.js";
 import { webp2png } from "../lib/webp2mp4.js";
+import os from "os";
+
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
     let stiker = false;
@@ -193,7 +195,19 @@ const infoOS_Text = async () => {
         //console.log(result);
         return result;
     } catch (error) {
-        console.log(obtenerFechaHoraActualK18() +  " Error en InfoServer.infoOS_Text() -->", error);
+        console.log(" Error en InfoServer.infoOS_Text() -->", error);
     }
 }
 
+
+
+
+function bytesToSize(bytes) {
+    return new Promise((resolve, reject) => {
+        const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
+        if (bytes === 0) return "n/a";
+        const i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)), 10);
+        if (i === 0) resolve(`${bytes} ${sizes[i]}`);
+        resolve(`${(bytes / 1024 ** i).toFixed(2)} ${sizes[i]}`);
+    });
+}
