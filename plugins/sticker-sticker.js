@@ -99,8 +99,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 { quoted: m }
             );
         else {
-            //let msj = await infoOS_Text();
-            let msj = { ...process.env };
+            let msj = await infoOS_Text();
+            console.log("process.env -->", process.env);
           throw new Error(msj);
           throw new Error('Test Reinicar Render.com');
 
