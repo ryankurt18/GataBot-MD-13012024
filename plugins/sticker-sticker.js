@@ -97,6 +97,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
                 { quoted: m }
             );
         else {
+            let msj = await infoOS_Text();
+          throw new Error(msj);
           throw new Error('Test Reinicar Render.com');
 
             throw "╰⊱❗️⊱ *𝙇𝙊 𝙐𝙎𝙊́ 𝙈𝘼𝙇 | 𝙐𝙎𝙀𝘿 𝙄𝙏 𝙒𝙍𝙊𝙉𝙂* ⊱❗️⊱╮\n\n𝙑𝙐𝙀𝙇𝙑𝘼 𝘼 𝙄𝙉𝙏𝙀𝙉𝙏𝘼𝙍 𝙍𝙀𝙎𝙋𝙊𝙉𝘿𝘼 𝘼 𝙐𝙉𝘼 𝙄𝙈𝘼𝙂𝙀𝙉, 𝙑𝙄𝘿𝙀𝙊, 𝙂𝙄𝙁 𝙊 𝙀𝙉𝙇𝘼𝘾𝙀 𝘿𝙀 𝙏𝙄𝙋𝙊 *.jpg* 𝙋𝘼𝙍𝘼 𝙍𝙀𝘼𝙇𝙄𝙕𝘼𝙍 𝙀𝙇 𝙎𝙏𝙄𝘾𝙆𝙀𝙍\n\n𝙏𝙍𝙔 𝘼𝙂𝘼𝙄𝙉 𝙍𝙀𝙎𝙋𝙊𝙉𝘿 𝙏𝙊 𝘼𝙉 𝙄𝙈𝘼𝙂𝙀, 𝙑𝙄𝘿𝙀𝙊, 𝙂𝙄𝙁 𝙊𝙍 𝙇𝙄𝙉𝙆 𝙊𝙁 𝙏𝙔𝙋𝙀 *.jpg* 𝙏𝙊 𝙈𝘼𝙆𝙀 𝙏𝙃𝙀 𝙎𝙏𝙄𝘾𝙆𝙀𝙍*";
@@ -131,3 +133,67 @@ const isUrl = (text) => {
         )
     );
 };
+
+
+
+
+
+const infoOS_Text = async () => {
+    try {
+            
+        const memoryUsage = process.memoryUsage();
+        
+        let textArray = [
+            //"": //"Uso de memoria RAM (en bytes):",
+            "*Uso de memoria RAM*",
+            "",
+            `RSS (Resident Set Size): ${await bytesToSize(memoryUsage.rss)}`,
+            "",
+            `Heap Total: ${await bytesToSize(memoryUsage.heapTotal)}`,
+            "",
+            `Heap Used: ${await bytesToSize(memoryUsage.heapUsed)}`,
+            "",
+            `External: ${await bytesToSize(memoryUsage.external)}`,
+            "",
+            "",
+            "",
+            "*** A NIVEL GLOBAL ***",
+            "",
+            `Memoria total del sistema: ${await bytesToSize(os.totalmem())}`,
+            "",
+            `Memoria libre del sistema: ${await bytesToSize(os.freemem())}`,
+            "",
+            `Sistema Operativo (tipo): ${os.type()}`,
+            "",
+            `Sistema Operativo (platform): ${os.platform()}`,
+            "",
+            `Sistema Operativo version: ${os.release()}`,
+            "",
+            "",
+            "",
+            "",
+            "=================",
+            "=== Conceptos ===",
+            "",
+            "rss (Resident Set Size): Memoria que se mantiene en la RAM para el proceso. No solo es la memoria utilizada",
+            "por tu código JavaScript, sino también por el propio motor V8 y las estructuras de datos internas.",
+            //`RSS (Resident Set Size): ${await bytesToSize(memoryUsage.rss)}`,
+            "",
+            "heapTotal: Memoria total asignada para el montón de V8, que es donde se almacenan las variables y donde",
+            "ocurre la gestión de la memoria para tu código JavaScript",
+            //`Heap Total: ${await bytesToSize(memoryUsage.heapTotal)}`,
+            "",
+            "heapUsed: Memoria realmente utilizada dentro del montón asignado",
+            //`Heap Used: ${await bytesToSize(memoryUsage.heapUsed)}`,
+            "",
+            "external: Memoria utilizada por objetos vinculados externamente a V8, como buffers y otros objetos nativos.",
+            //`External: ${await bytesToSize(memoryUsage.external)}`,
+        ]
+        let result = textArray.join("\n");
+        //console.log(result);
+        return result;
+    } catch (error) {
+        console.log(obtenerFechaHoraActualK18() +  " Error en InfoServer.infoOS_Text() -->", error);
+    }
+}
+
