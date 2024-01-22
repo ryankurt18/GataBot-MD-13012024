@@ -10,7 +10,8 @@ RUN apk update && \
   libwebp-tools && \
   rm -rf /var/cache/apk/*
 
-VOLUME /GataBotSession
+# Instalar PM2 globalmente
+RUN npm install -g pm2
 
 COPY package*.json .
 
@@ -20,5 +21,5 @@ COPY . .
 
 EXPOSE 5000
 
-#Kurt18: Iniciará con el QR
-CMD ["npm", "run", "qr"]
+# Iniciar la aplicación con PM2
+CMD ["pm2-runtime", "start", "index.js", "--", "qr"]
